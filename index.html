@@ -3,29 +3,74 @@
 
 <head>
 
+<button class="tablink" onclick="openPage('Moa', this, 'red')" id="defaultOpen">Moa</button>
+<button class="tablink" onclick="openPage('Mil', this, 'green')" >Mil</button>
+
+
+<div id="Home" class="tabcontent">
+  <h3>Home</h3>
+  <p>Home is where the heart is..</p>
+</div>
+
+<div id="News" class="tabcontent">
+  <h3>News</h3>
+  <p>Some news this fine day!</p>
+</div>
+
+<div id="Contact" class="tabcontent">
+  <h3>Contact</h3>
+  <p>Get in touch, or swing by for a cup of coffee.</p>
+</div>
+
+<div id="About" class="tabcontent">
+  <h3>About</h3>
+  <p>Who we are and what we do.</p>
+</div>
+
+
+
+
+
+
+
+
+
+<img src="moa_slides.gif" style="width:1280px;height:700px;">
+
+<br>
+
+
+<img src="moa_calc.png" width=25% height=25%>
+
+<br>
+
+Den här kalkylatorn räknar ut hur stort avstånd "x" som <span>&#593;</span> (antal MOA) motsvarar på sträckan l. 
+
+<br>
+
 <label for="enhet1">Hur många</label>
 
 <select id="enhet1">
-	<option value="0" disabled selected value> - Välj ett alternativ - </option>
-	<option value="1">Millimeter</option>
-	<option value="2">Centimeter</option>
-	<option value="3">Tum</option>
+	<option value="1">millimeter</option>
+	<option value="2" selected>centimeter</option>
+	<option value="3">tum</option>
 </select><br><br>
 
 <label for="moa">motsvarar</label>
-<input type="text" id="moa"> MOA <br><br>
+<input type="number" id="moa"> MOA <br><br>
 <label for="distans">på</label>
 <input type="number" id="distans">
 
 <select id="enhet2">
-	<option value="0" disabled selected value> - Välj ett alternativ - </option>
-	<option value="1">Meter</option>
-	<option value="2">Yard</option>
-	<option value="3">Feet</option>
+	<option value="1" selected>meter</option>
+	<option value="2">yard</option>
+	<option value="3">feet</option>
 </select><br><br>
+
 
 <button type="button" onclick=go();>OK</button>
 Svar: 
+
 
 <script src="jquery_3.6.0.js"></script>
 	
@@ -73,10 +118,38 @@ Svar:
 			var ans = ((Math.tan(Math.PI / 180) * distans )/60) * (u2/u1) * moa
 			var ans1 =  (u2/u1)
 			
+			var ans = ans.toFixed(2);
+			
 			alert(ans);
 			
 			}
+			
+			
+        			function openPage(pageName, elmnt, color) {
+          // Hide all elements with class="tabcontent" by default */
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+        
+          // Remove the background color of all tablinks/buttons
+          tablinks = document.getElementsByClassName("tablink");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+          }
+        
+          // Show the specific tab content
+          document.getElementById(pageName).style.display = "block";
+        
+          // Add the specific color to the button used to open the tab content
+          elmnt.style.backgroundColor = color;
+        }
+        
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
 		</script>
+
 </head>
 
 </html>
